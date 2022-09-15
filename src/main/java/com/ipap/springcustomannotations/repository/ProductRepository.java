@@ -1,2 +1,7 @@
-package com.ipap.springcustomannotations.repository;public class ProductRepository {
+package com.ipap.springcustomannotations.repository;
+
+import com.ipap.springcustomannotations.entity.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProductRepository extends JpaRepository<Product, Long> {
 }

@@ -2,10 +2,9 @@ package com.ipap.springcustomannotations.controller;
 
 import com.ipap.springcustomannotations.entity.Product;
 import com.ipap.springcustomannotations.service.ProductService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +21,10 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<List<Product>> getAllProducts() {
         return ResponseEntity.ok(productService.findAllProducts());
+    }
+
+    @PostMapping
+    public ResponseEntity<Product> addProducts(@RequestBody Product product) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(productService.addProduct(product));
     }
 }
